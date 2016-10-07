@@ -12,7 +12,7 @@ echo "Building image"
 docker build -t pas:latest .
 
 echo "Removing container if exists"
-docker rm -f pas || echo "COntainer does not exist"
+docker rm -f pas || echo "Container does not exist"
 
 echo "Creating container"
 docker run -itd --name pas -v $BASEDIR:/opt/pas pas:latest 

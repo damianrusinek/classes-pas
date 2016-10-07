@@ -1,0 +1,53 @@
+root@a37289c3b545:/opt/pas/email# python send_email.py 
+What is the sender's email adress? <sender>@gmail.com
+What is the recipient's email adress? <receiver>@gmail.com
+What is the subject? Wiadomosc testowa
+Enter the message. Empty line ends the message.
+Wiadomosc jawna.
+
+Enter the file names of attachments. Empty line ends the list.
+wiadomosc
+
+send: 'ehlo [172.17.0.2]\r\n'
+reply: '250-a37289c3b545 Hello localhost [127.0.0.1], pleased to meet you\r\n'
+reply: '250-ENHANCEDSTATUSCODES\r\n'
+reply: '250-PIPELINING\r\n'
+reply: '250-EXPN\r\n'
+reply: '250-VERB\r\n'
+reply: '250-8BITMIME\r\n'
+reply: '250-SIZE\r\n'
+reply: '250-DSN\r\n'
+reply: '250-ETRN\r\n'
+reply: '250-AUTH DIGEST-MD5 CRAM-MD5\r\n'
+reply: '250-DELIVERBY\r\n'
+reply: '250 HELP\r\n'
+reply: retcode (250); Msg: a37289c3b545 Hello localhost [127.0.0.1], pleased to meet you
+ENHANCEDSTATUSCODES
+PIPELINING
+EXPN
+VERB
+8BITMIME
+SIZE
+DSN
+ETRN
+AUTH DIGEST-MD5 CRAM-MD5
+DELIVERBY
+HELP
+send: 'mail FROM:<sender@gmail.com> size=2671\r\n'
+reply: '250 2.1.0 <sender@gmail.com>... Sender ok\r\n'
+reply: retcode (250); Msg: 2.1.0 <sender@gmail.com>... Sender ok
+send: 'rcpt TO:<receiver@gmail.com>\r\n'
+reply: '250 2.1.5 <receiver@gmail.com>... Recipient ok\r\n'
+reply: retcode (250); Msg: 2.1.5 <receiver@gmail.com>... Recipient ok
+send: 'data\r\n'
+reply: '354 Enter mail, end with "." on a line by itself\r\n'
+reply: retcode (354); Msg: Enter mail, end with "." on a line by itself
+data: (354, 'Enter mail, end with "." on a line by itself')
+send: 'Content-Type: multipart/mixed; boundary="===============8001626673766582685=="\r\nMIME-Version: 1.0\r\nTo: <receiver>@gmail.com\r\nFrom: <sender>@gmail.com\r\nSubject: Wiadomosc testowa\r\n\r\n--===============8001626673766582685==\r\nContent-Type: text/plain; charset="us-ascii"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\nWiadomosc jawna.\r\n\r\n--===============8001626673766582685==\r\nContent-Type: application/octet-stream; Name="wiadomosc"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: base64\r\nContent-Disposition: attachment; filename="wiadomosc"\r\n\r\nU1VQRVIgVEFKTkEgV0lBRE9NT1NDISEh\r\n--===============8001626673766582685==--\r\n.\r\n'
+reply: '250 2.0.0 u8RIF2Ba000154 Message accepted for delivery\r\n'
+reply: retcode (250); Msg: 2.0.0 u8RIF2Ba000154 Message accepted for delivery
+data: (250, '2.0.0 u8RIF2Ba000154 Message accepted for delivery')
+You email is sent to <receiver>@gmail.com.
+send: 'quit\r\n'
+reply: '221 2.0.0 a37289c3b545 closing connection\r\n'
+reply: retcode (221); Msg: 2.0.0 a37289c3b545 closing connection

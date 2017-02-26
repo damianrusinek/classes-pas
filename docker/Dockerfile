@@ -11,8 +11,14 @@ RUN apt-get install -y supervisor
 RUN apt-get install -y postfix 
 RUN apt-get install -y mailutils
 RUN apt-get install -y courier-imap
+RUN apt-get install -y libffi-dev
+RUN apt-get install -y libssl-dev
+RUN apt-get install -y openssh-server
+RUN apt-get install -y proftpd-basic
 
-RUN useradd test -p pawpU97AVNPO6 -m
+# Powinny byc uruchomione usługi: ssh, smtp, pop3
+
+RUN useradd test -p pawpU97AVNPO6 -m # test:test
 RUN maildirmake /home/test/Maildir
 RUN chown -R test:test /home/test
 

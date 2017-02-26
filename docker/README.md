@@ -46,20 +46,20 @@ Dla użytkowników Linuxa istnieje skrypt, który automatycznie realizuje kroki 
 
 2. Uruchomienie kontenera
 
-	Po zbudowaniu obrazku możemy na jego podstawie uruchomić kontener. W tym celu należy uruchomić jedną z poniższych komend, w zależności na jakim systemie działasz.
+	Po zbudowaniu obrazu możemy na jego podstawie uruchomić kontener. W tym celu należy uruchomić jedną z poniższych komend, w zależności na jakim systemie działasz.
 
-	Linux: `docker run --itd --name pas -v <sciezka_bezwzgledna_do_folderu_z_zajec>:/opt/pas pas:latest bash`
-	Windows: `docker.exe run --itd --name pas -v //opt/pas:/opt/pas pas:latest bash`
+	Linux: `docker run --d --name pas -v <sciezka_bezwzgledna_do_folderu_z_zajec>:/opt/pas pas:latest`
+	Windows: `docker.exe run --d --name pas -v //opt/pas:/opt/pas pas:latest`
 
-	Kontener zostanie uruchomiony i przejdziesz do jego wiersza poleceń (basha). Jesteś teraz w kontenerze i możesz na nim uruchamiać komendy. *To jest punkt wyjścia dla wszystkich przykładów i zadań omawianych na zajęciach*. Możesz sprawdzić, czy wszystko działa uruchamiając komendę `ls -la`. Powinna pojawić się lista współdzielonych plików z folderu z zajęć. Jeśli chcesz powrócić do wiersza poleceń systemu głównego, wystarczy że wciśniesz Ctrl+D.
-
-	*Jeśli z jakiegoś powodu, w dalszej pracy, kontener przestanie działać, możesz go usunąć i stworzyć na nowo. Usunięcie kontenera polega na uruchomieniu komendy `docker rm -f pas`. Nie martw się, nie stracisz plików, ponieważ one są tak naprawdę na Twoim systemie głównym, a w kontenerze są tylko współdzielone.*
+	Kontener zostanie uruchomiony i będziesz mógł/mogła się z nim połączyć. 
 
 3. Połączenie z kontenerem
 
 	Niektórzy lubią połączyć się z kontenerem i uruchamiać wszystkie komendy (np. kompilujące kod lub uruchamiające program) bezpośrednio z linii poleceń kontenera, a inni wolą pośrednio przez dockera. Ta sekcja jest dla pierwszej grupy.
 
-	Po uruchomieniu kontenera w punkcie 2 zostajesz do niego przeniesiony automatycznie. Jednakże, jak tam wspomniałem, możesz wrócić do wiersza poleceń na systemie głównym, czyli de facto zakończyć połączenie z kontenerem, czy mówiąc inaczej, po prostu z niego wyjść. Po opuszczeniu kontenera on wciąż działa i ma się dobrze. Jeśli chcesz do niego powrócić (np. żeby uruchomić program, który właśnie zmieniłeś/łaś) musisz wywołać komendę `docker exec -it pas bash`. Podobnie, jak po uruchomieniu kontenera pojawi się jego wiersz poleceń.
+	Po uruchomieniu kontenera w punkcie 2 musisz wywołać komendę `docker exec -it pas bash`, żeby przejść do jego wiersza poleceń. *To jest punkt wyjścia dla wszystkich przykładów i zadań omawianych na zajęciach*. Możesz sprawdzić, czy wszystko działa uruchamiając komendę `ls -la`. Powinna pojawić się lista współdzielonych plików z folderu z zajęć. Jeśli chcesz powrócić do wiersza poleceń systemu głównego, wystarczy że wciśniesz Ctrl+D. Po opuszczeniu kontenera on wciąż działa i ma się dobrze. Jeśli chcesz do niego powrócić (np. żeby uruchomić program, który właśnie zmieniłeś/łaś) musisz wywołać ponownie komendę `docker exec -it pas bash`. Podobnie, jak wcześniej pojawi się jego wiersz poleceń.
+
+	*Jeśli z jakiegoś powodu, w dalszej pracy, kontener przestanie działać, możesz go usunąć i stworzyć na nowo. Usunięcie kontenera polega na uruchomieniu komendy `docker rm -f pas`. Nie martw się, nie stracisz plików, ponieważ one są tak naprawdę na Twoim systemie głównym, a w kontenerze są tylko współdzielone.*
 
 	_Oczywiście istnieje możliwość połączenia się z kontenerem przez SSH, jednakże opcja, którą udostępnia docker jest wygodniejsza, bo nie wymaga konfiguracji (np. stworzenia konta użytkownika i ustawienia hasła). To tylko pokazuje, że dla każdego problemu istnieje wiele rozwiązań._
 
@@ -83,8 +83,8 @@ Dla użytkowników Linuxa istnieje skrypt, który automatycznie realizuje kroki 
 
 	* Uruchomienie kontenera (optymistycznie jednorazowe)
 
-		Linux: `docker run --itd --name pas -v <sciezka_bezwzgledna_do_folderu_z_zajec_na_systemie_glownym>:/opt/pas pas:latest bash`
-		Windows: `docker.exe run --itd --name pas -v //opt/pas:/opt/pas pas:latest bash`
+		Linux: `docker run --d --name pas -v <sciezka_bezwzgledna_do_folderu_z_zajec_na_systemie_glownym>:/opt/pas pas:latest`
+		Windows: `docker.exe run --d --name pas -v //opt/pas:/opt/pas pas:latest`
 
 	* Usunięcie kontenera
 		

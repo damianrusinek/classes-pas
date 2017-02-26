@@ -15,7 +15,7 @@ echo "Removing container if exists"
 docker rm -f pas || echo "Container does not exist"
 
 echo "Creating container"
-docker run -itd --name pas -v $BASEDIR:/opt/pas pas:latest 
+docker run -d --name pas -v $BASEDIR:/opt/pas pas:latest 
 
 echo "Going back to $CURDIR"
 cd $CURDIR

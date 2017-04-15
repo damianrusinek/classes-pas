@@ -15,6 +15,7 @@ RUN apt-get install -y libffi-dev
 RUN apt-get install -y libssl-dev
 RUN apt-get install -y openssh-server
 RUN apt-get install -y proftpd-basic
+RUN apt-get install -y git
 
 # Powinny byc uruchomione usługi: ssh, smtp, pop3
 
@@ -25,7 +26,11 @@ RUN chown -R test:test /home/test
 ADD assets/configure.sh /opt/configure.sh
 RUN chmod u+x /opt/configure.sh
 
+RUN git clone https://github.com/ernw/knxmap.git /opt/knxmap
+RUN cd /opt/knxmap && git checkout v0.9.0
+
 RUN mkdir /opt/pas
 WORKDIR /opt/pas
+
 
 CMD /opt/configure.sh;/usr/bin/supervisord -c /etc/supervisor/supervisord.conf

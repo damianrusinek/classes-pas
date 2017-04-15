@@ -17,10 +17,10 @@ def recvall(s, n):
   return data
 
 def parse_headers(headers_string):
-  protocol, status, status_name = [
-    s.strip() 
-    for s in headers_string.split(CRLF)[0].split(' ')
+  firstline_elems = [  
+    s.strip() for s in headers_string.split(CRLF)[0].split(' ') 
   ]
+  protocol, status, status_name = firstline_elems[0], firstline_elems[1], ' '.join(firstline_elems[2:])
   status = int(status)
   headers = dict([(s.split(':')[0].lower(), ':'.join(s.split(':')[1:])) 
     for s in headers_string.strip().split(CRLF)[1:]])

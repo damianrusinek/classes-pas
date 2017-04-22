@@ -152,7 +152,8 @@ class KNXServer():
 			#Send indicator
 			if self.group_address == self.parse_group_address_integer(m.body['cemi']['knx_destination']):
 				global GROUP_VALUE
-				GROUP_VALUE = m.body['cemi']['apci']['data']
+				GROUP_VALUE = (m.body['cemi']['apci']['data'] << 8 * len(m.body['cemi']['data'])) \
+					+ int.from_bytes(m.body['cemi']['data'], 'big')
 				resp = mmsg.KnxTunnellingRequestIndicator(request=m, communication_channel=communication_channel, 
 					sequence_count=self.get_next_sequence(communication_channel,m.body['sequence_counter']), sockname=client_addr,
 					knx_source='1.1.1', knx_destination=knx_destination)
@@ -202,7 +203,7 @@ def main():
 				try:
 					if len(i) != 1:
 						raise ValueError()
-					port = int(i)
+					int(i)
 				except ValueError:
 					parser.error("group_address can consist of integers only")
 		group_address = args[1]

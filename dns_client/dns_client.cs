@@ -10,9 +10,6 @@ namespace DnsClient
         static void Main(string[] args)
         {
             // c# 7.0 tinkering, use this version of input error handling if you want
-            //string hostname = args.Length == 1
-            //    ? args[0]
-            //    : throw new ArgumentException("Usage: run with parameter <host-name>");
             if (args.Length != 1)
             {
                 Console.Error.WriteLine("Usage: run with parameter <host-name>");
@@ -21,20 +18,14 @@ namespace DnsClient
             var hostname = args[0];
             try
             {
-                IPHostEntry entry = GetHostEntry(hostname);
-                //GetHostByName method is obsolete
+                IPHostEntry entry = GetHostEntry(hostname); //GetHostByName method is obsolete
                 var ip = entry.AddressList.FirstOrDefault();
                 Console.WriteLine($"Resolved IP address: {ip}");
-#if DEBUG
-                Console.Read();
-#endif
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-            
-
         }
     }
 }

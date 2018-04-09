@@ -9,7 +9,6 @@ namespace DnsClient
     {
         static void Main(string[] args)
         {
-            // c# 7.0 tinkering, use this version of input error handling if you want
             if (args.Length != 1)
             {
                 Console.Error.WriteLine("Usage: run with parameter <host-name>");

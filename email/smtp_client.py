@@ -69,7 +69,7 @@ if __name__ == "__main__":
       exit(1)
 
     for receiver_email in receiver_emails:
-      sock.send('RCPT TO: %s\n' % (sender_email,))
+      sock.send('RCPT TO: %s\r\n' % (receiver_email,))
       data = sock.recv(BUF_SIZE)
       code = get_resp_code(data)
       if code != 250:
